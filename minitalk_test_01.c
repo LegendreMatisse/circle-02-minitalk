@@ -6,7 +6,7 @@
 /*   By: mlegendr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 17:37:38 by mlegendr          #+#    #+#             */
-/*   Updated: 2023/08/11 17:56:15 by mlegendr         ###   ########.fr       */
+/*   Updated: 2023/08/14 17:59:14 by mlegendr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	ft_iterative_power(int nb, int power)
 }
 
 int ft_bin_to_char_calc(char	*bin_str);
+int ft_bin_to_char_2(char	*bin_str);
 
 void	ft_char_to_bin(char *str)
 {
@@ -68,35 +69,52 @@ void	ft_char_to_bin(char *str)
 
 		// Binary to char
 		char	converted_c;
+		char	converted_c_2;
 		
 		converted_c = '\0';
+		converted_c_2 = '\0';
 		converted_c = ft_bin_to_char_calc(bin_str);
-		printf(" Converted: %c\n", converted_c);
+		printf(" Converted: %c", converted_c);
+		converted_c_2 = ft_bin_to_char_2(bin_str);
+		printf(" Converted: %c\n", converted_c_2);
 		i++;
 	}
 
+}
+
+int	ft_bin_to_char_2(char *bin_str)
+{
+	int	i;
+	int	c;
+
+	i = 7;
+	c = 0;
+	while (bin_str[i])
+	{
+		if (bin_str[i] == '1')
+			c |= (1 << (7 - i));
+		else
+			c |= (0 << (7 - i));
+		i--;
+	}
+	return (c);
 }
 
 int	ft_bin_to_char_calc(char *bin_str)
 {
 	int		result;
 	int		int_c;
-	int		base;
 	int		i;
 	int		j;
-	int		result_power;
 
 	result = 0;
 	int_c = 0;
-	base = 2;
-	result_power = 0;
 	i = 7;
 	j = 0;
 	while (bin_str[j])
 	{
 		int_c = bin_str[j] - '0';
-		result_power = ft_iterative_power(base, i);
-		result += int_c * result_power;
+		result += int_c * ft_iterative_power(2, i);
 		i--;
 		j++;
 	}
@@ -138,6 +156,7 @@ int	main(void)
 	ft_bin_conv(0, str_1);
 	printf("\n\n ~~~~~ \n\n");
 	ft_char_to_bin(str_1);
+	printf("\n\n ~~~~~ \n\n");
 
 	/*
 	struct sigaction sa;
