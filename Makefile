@@ -6,7 +6,7 @@
 #    By: mlegendr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/16 18:33:04 by mlegendr          #+#    #+#              #
-#    Updated: 2023/08/16 19:18:30 by mlegendr         ###   ########.fr        #
+#    Updated: 2023/08/18 15:10:18 by mlegendr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,10 +26,10 @@ all: server client
 #bonus server_bonus client_bonus
 
 server: minitalk_test_02_server.o libft printf
-		$(CC) -o $@ minitalk_test_02_server.o -Lprintf -lftprintf -v
+		$(CC) -o $@ minitalk_test_02_server.o -Lprintf -lftprintf
 
 client: minitalk_test_02_client.o libft printf
-		$(CC) -o $@ minitalk_test_02_client.o -Lprintf -lftprintf -v
+		$(CC) -o $@ minitalk_test_02_client.o -Lprintf -lftprintf
 
 %.o: %.c
 		$(CC) -c $(CFLAGS) $?
