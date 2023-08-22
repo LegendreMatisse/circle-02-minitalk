@@ -6,7 +6,7 @@
 /*   By: mlegendr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 17:12:08 by mlegendr          #+#    #+#             */
-/*   Updated: 2023/08/18 20:21:54 by mlegendr         ###   ########.fr       */
+/*   Updated: 2023/08/22 16:28:06 by mlegendr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 static void	ft_test_server(int sig, siginfo_t *info, void *context)
 {
-	static int				i = 7;
+	static int				i = 0;
 	static int				j = 0;
 	static unsigned char	c = 0;
 
@@ -34,14 +34,14 @@ static void	ft_test_server(int sig, siginfo_t *info, void *context)
 		ft_putchar_fd('0', 1);
 		c |= (0 << (7 - i));
 	}
-	i--;
+	i++;
 	if (++j == 8)
 	{
 		ft_putstr_fd("c: ", 1);
 		ft_putchar_fd(c, 1);
 		ft_putchar_fd('\n', 1);
 		c = 0;
-		i = 7;
+		i = 0;
 		j = 0;
 	}
 
