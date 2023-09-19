@@ -6,7 +6,7 @@
 /*   By: mlegendr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 17:12:08 by mlegendr          #+#    #+#             */
-/*   Updated: 2023/09/19 19:03:56 by mlegendr         ###   ########.fr       */
+/*   Updated: 2023/09/19 19:32:18 by mlegendr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,26 +25,17 @@ static void	sig_handler(int sig, siginfo_t *info, void *context)
 	(void)info;
 	(void)context;
 	if (sig == SIGUSR1)
-	{
-		ft_putchar_fd('1', 1);
 		c |= (1 << (7 - i));
-	}
 	else if (sig == SIGUSR2)
-	{
-		ft_putchar_fd('0', 1);
 		c |= (0 << (7 - i));
-	}
 	i++;
 	if (++j == 8)
 	{
-		ft_putstr_fd("c: ", 1);
 		ft_putchar_fd(c, 1);
-		ft_putchar_fd('\n', 1);
 		c = 0;
 		i = 0;
 		j = 0;
 	}
-
 }
 
 int	main(void)
@@ -61,17 +52,4 @@ int	main(void)
 		sigaction(SIGUSR1, &s_sa, 0);
 		sigaction(SIGUSR2, &s_sa, 0);
 	}
-	/*
-	struct sigaction	s_sa;
-
-	ft_printf("The server has started...\n");
-	ft_printf("The server PID is: %d\n", getpid());
-	s_sa.sa_sigaction = ft_test_server;
-	s_sa.sa_flags = SA_SIGINFO;
-	sigaction(SIGUSR1, &s_sa, 0);
-	sigaction(SIGUSR2, &s_sa, 0);
-	while (1)
-		pause();
-	return (0);
-	*/
 }

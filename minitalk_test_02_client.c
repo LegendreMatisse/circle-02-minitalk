@@ -6,7 +6,7 @@
 /*   By: mlegendr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 17:12:08 by mlegendr          #+#    #+#             */
-/*   Updated: 2023/08/18 20:31:59 by mlegendr         ###   ########.fr       */
+/*   Updated: 2023/09/19 19:31:52 by mlegendr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,11 @@ void	ft_test_client(int pid, char *str)
 			msb_value = 0;
 			msb_value = (c >> bit_count) & 1;
 			if (msb_value == 1)
-			{
 				kill(pid, SIGUSR1);
-				ft_putchar_fd('1', 1);
-			}
 			else if (msb_value == 0)
-			{
 				kill(pid, SIGUSR2);
-				ft_putchar_fd('0', 1);
-			}
 			usleep(500);
 		}
-		ft_putchar_fd('\n', 1);
 	}
 	bit_count = 8;
 }
