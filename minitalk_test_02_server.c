@@ -6,7 +6,7 @@
 /*   By: mlegendr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 17:12:08 by mlegendr          #+#    #+#             */
-/*   Updated: 2023/08/22 16:28:06 by mlegendr         ###   ########.fr       */
+/*   Updated: 2023/09/19 19:03:56 by mlegendr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "printf/ft_printf.h"
 #include "libft/libft.h"
 
-static void	ft_test_server(int sig, siginfo_t *info, void *context)
+static void	sig_handler(int sig, siginfo_t *info, void *context)
 {
 	static int				i = 0;
 	static int				j = 0;
@@ -51,6 +51,19 @@ int	main(void)
 {
 	struct sigaction	s_sa;
 
+	(void)s_sa;
+	ft_printf("The server has started...\n");
+	ft_printf("The server PID is: %d\n", getpid());
+	while (1)
+	{
+		s_sa.sa_sigaction = &sig_handler;
+		s_sa.sa_flags = SA_SIGINFO;
+		sigaction(SIGUSR1, &s_sa, 0);
+		sigaction(SIGUSR2, &s_sa, 0);
+	}
+	/*
+	struct sigaction	s_sa;
+
 	ft_printf("The server has started...\n");
 	ft_printf("The server PID is: %d\n", getpid());
 	s_sa.sa_sigaction = ft_test_server;
@@ -60,4 +73,5 @@ int	main(void)
 	while (1)
 		pause();
 	return (0);
+	*/
 }
