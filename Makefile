@@ -6,7 +6,7 @@
 #    By: mlegendr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/16 18:33:04 by mlegendr          #+#    #+#              #
-#    Updated: 2023/09/22 15:18:18 by mlegendr         ###   ########.fr        #
+#    Updated: 2023/09/22 17:22:38 by mlegendr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,14 +16,8 @@ OBJECTS = $(SOURCES:.c=.o)
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 
-#LIBFT_PATH: ./libft
-#LIBFT: $(LIBFT_PATH)/libft.a
-
-#PRINTF_PATH: ./printf
-#printf: $(PRINTF_PATH)/libftprintf.a
-
 all: server client
-#bonus server_bonus client_bonus
+
 
 server: server.o libft printf
 		$(CC) -o $@ server.o -Lprintf -lftprintf
@@ -51,4 +45,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all libft printf clean fclean re
-

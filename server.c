@@ -1,22 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk_test_02_server.c                          :+:      :+:    :+:   */
+/*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlegendr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 17:12:08 by mlegendr          #+#    #+#             */
-/*   Updated: 2023/09/22 15:07:07 by mlegendr         ###   ########.fr       */
+/*   Updated: 2023/09/22 16:09:04 by mlegendr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-#include <unistd.h>
-#include <signal.h>
-#include "printf/ft_printf.h"
-#include "libft/libft.h"
-*/
 #include "minitalk.h"
+
 static void	sig_handler(int sig, siginfo_t *info, void *context)
 {
 	static int				i = 0;
